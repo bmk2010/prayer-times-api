@@ -4,7 +4,24 @@ import React, { useState } from "react";
 
 function Page() {
   const [tab, setTab] = useState<number>(0);
-  const prayerTimesData = {
+  type ResponseData = {
+    timings: {
+      Fajr: string;
+      Sunrise: string;
+      Dhuhr: string;
+      Asr: string;
+      Sunset: string;
+      Maghrib: string;
+      Isha: string;
+      Imsak: string;
+      Midnight: string;
+      Firstthird: string;
+      Lastthird: string;
+    };
+    date: string;
+  };
+  
+  const prayerTimes: ResponseData = {
     timings: {
       Fajr: "05:34",
       Sunrise: "06:49",
@@ -20,6 +37,7 @@ function Page() {
     },
     date: "24-10-2024",
   };
+  
 
   function handleTabClick() {
     setTab(1);
@@ -71,7 +89,7 @@ function Page() {
           <p>Bu API ning javobi</p>
           <div className="bg-black w-[450px] mx-auto">
             <pre className="whitespace-pre-wrap text-start">
-              {JSON.stringify(prayerTimesData, null, 2)}
+              {JSON.stringify(prayerTimes, null, 2)}
             </pre>
           </div>
         </div>

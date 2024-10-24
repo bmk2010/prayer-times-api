@@ -20,8 +20,8 @@ function Page() {
     };
     date: string;
   };
-  
-  const prayerTimes: ResponseData = {
+
+  const [prayerTimes, setPrayerTimes] = useState<ResponseData>({
     timings: {
       Fajr: "05:34",
       Sunrise: "06:49",
@@ -36,8 +36,7 @@ function Page() {
       Lastthird: "02:25",
     },
     date: "24-10-2024",
-  };
-  
+  });
 
   function handleTabClick() {
     setTab(1);

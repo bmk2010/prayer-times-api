@@ -60,13 +60,13 @@ function Page() {
         <div className="mt-10 text-center text-white">
           <h3>Tab 1 ochildi!</h3>
           <p>API qanday ishlatiladi?</p>
-          <p>APIni ishlatish uchun unga so'rov yuborishiniz lozim</p>
+          <p>APIni ishlatish uchun unga so&apos;rov yuborishiniz lozim</p>
           <div className="bg-gray-500 w-[450px] mx-auto">
             http://localhost:3000/api/times/?city=Jizzakh
           </div>
           <p>
-            Bu yerda ?city=Jizzakh Jizzakh o'rniga o'zingizga kerakli shahar
-            nomini qo'ysangiz bo'ladi
+            Bu yerda ?city=Jizzakh Jizzakh o&apos;rniga o&apos;zingizga kerakli shahar
+            nomini qo&apos;ysangiz bo&apos;ladi
           </p>
           <p>Bu API ning javobi</p>
           <div className="bg-black w-[450px] mx-auto">

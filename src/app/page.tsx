@@ -4,6 +4,8 @@ import React, { useState } from "react";
 
 function Page() {
   const [tab, setTab] = useState<number>(0);
+
+  // Define ResponseData type
   type ResponseData = {
     timings: {
       Fajr: string;
@@ -21,7 +23,8 @@ function Page() {
     date: string;
   };
 
-  const [prayerTimes, setPrayerTimes] = useState<ResponseData>({
+  // Initialize prayerTimes using ResponseData type
+  const prayerTimes: ResponseData = {
     timings: {
       Fajr: "05:34",
       Sunrise: "06:49",
@@ -36,7 +39,7 @@ function Page() {
       Lastthird: "02:25",
     },
     date: "24-10-2024",
-  });
+  };
 
   function handleTabClick() {
     setTab(1);

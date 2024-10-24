@@ -59,7 +59,7 @@ function Page() {
       {tab === 1 && (
         <div className="mt-10 text-center text-white">
           <h3>Tab 1 ochildi!</h3>
-          <p>API qanday ishlatiladi ?</p>
+          <p>API qanday ishlatiladi?</p>
           <p>APIni ishlatish uchun unga so'rov yuborishiniz lozim</p>
           <div className="bg-gray-500 w-[450px] mx-auto">
             http://localhost:3000/api/times/?city=Jizzakh

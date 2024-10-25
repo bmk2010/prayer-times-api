@@ -1,6 +1,6 @@
 // app/api/prayer-times/route.ts
-import axios from 'axios';
-import { NextResponse } from 'next/server';
+import axios from "axios";
+import { NextResponse } from "next/server";
 
 type PrayerTimes = {
   Fajr: string;
@@ -32,27 +32,33 @@ const cities = [
   "Termiz",
   "Farg‘ona",
   "Toshkent",
-  "Bukhara"
+  "Bukhara",
 ];
 
 export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const city = searchParams.get('city');
+  const token = req.headers.get("token");
 
-  if (!city || typeof city !== 'string' || !cities.includes(city)) {
-    return NextResponse.json({ error: 'Valid city is required' }, { status: 400 });
+  const { searchParams } = new URL(req.url);
+  const city = searchParams.get("city");
+
+  if (!city || typeof city !== "string" || !cities.includes(city)) {
+    return NextResponse.json(
+      { error: "Valid city is required" },
+      { status: 400 }
+    );
   }
 
-  const cityName = city === 'Garasha' ? 'Jizzakh' : city;
+  const cityName = city === "Garasha" ? "Jizzakh" : city;
 
   try {
-    const response = await axios.get(`http://api.aladhan.com/v1/timingsByCity?city=${cityName}&country=Uzbekistan&method=2`);
-    
+    const response = await axios.get(
+      `http://api.aladhan.com/v1/timingsByCity?city=${cityName}&country=Uzbekistan&method=2`
+    );
     if (response.status === 200) {
       const data = response.data.data;
       const timings = data.timings;
 
-      if (city === 'Garasha') {
+      if (city === "Garasha") {
         // Adjust Garasha times
         for (const prayer in timings) {
           const time = new Date(`1970-01-01T${timings[prayer]}:00Z`);
@@ -63,10 +69,16 @@ export async function GET(req: Request) {
 
       return NextResponse.json({ timings, date: data.date.gregorian.date });
     } else {
-      return NextResponse.json({ error: 'Error fetching prayer times' }, { status: 500 });
+      return NextResponse.json(
+        { error: "Error fetching prayer times" },
+        { status: 500 }
+      );
     }
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
+    return NextResponse.json(
+      { error: "An unexpected error occurred" },
+      { status: 500 }
+    );
   }
 }

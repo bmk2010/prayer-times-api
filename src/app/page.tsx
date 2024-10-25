@@ -1,8 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Page() {
+  useEffect(() => {
+    fetch("/api/times?city=Jizzakh", {
+      headers: {"token": "salom"}
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  });
+
   const [tab, setTab] = useState<number>(0);
 
   // Define ResponseData type
@@ -85,8 +93,8 @@ function Page() {
             http://localhost:3000/api/times/?city=Jizzakh
           </div>
           <p>
-            Bu yerda ?city=Jizzakh Jizzakh o&apos;rniga o&apos;zingizga kerakli shahar
-            nomini qo&apos;ysangiz bo&apos;ladi
+            Bu yerda ?city=Jizzakh Jizzakh o&apos;rniga o&apos;zingizga kerakli
+            shahar nomini qo&apos;ysangiz bo&apos;ladi
           </p>
           <p>Bu API ning javobi</p>
           <div className="bg-black w-[450px] mx-auto">
